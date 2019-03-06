@@ -1,0 +1,160 @@
+<div>
+  <div *ngIf="isSaved" class="alert alert-info alert-dismissible fade show" role="alert">
+    hello {{user.name}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class='card'>
+    <div class='card-header'>
+      <div>Registration Form</div>
+      <div class="card-body">
+        <div *ngIf="errorMessage" class='error'>
+          {{errorMessage}}
+        </div>
+
+        <form [formGroup]="userForm" novalidate (submit)="save()">
+          <div class='col-md-4'>
+            <label>Name</label><br>
+            <input type="text" formControlName="name" name="name" class='form-control' />
+            <div class='error' *ngIf="userForm.status =='INVALID' ">
+              <div class='alert alert-danger' *ngIf="userForm.controls['name'].errors">
+                <div *ngIf="userForm.controls['name'].errors.required">
+                  Name is Required
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class='col-md-4'>
+            <label>Email address</label><br>
+            <input type="text" formControlName="email" name="email" class='form-control' />
+            <div class='error' *ngIf="userForm.controls['email'].errors">
+              <div class='alert alert-danger' *ngIf="userForm.controls['email'].errors.required">
+                Email is Required
+              </div>
+              <div *ngIf="userForm.controls['email'].errors.email">
+                Please specify a valid Email
+              </div>
+            </div>
+          </div>
+          <div class='col-md-4'>
+            <label>Password</label><br>
+            <input type="password" formControlName="password" name="password" class='form-control' />
+            <div class='error' *ngIf="userForm.controls['password'].errors">
+              <div class='alert alert-danger' *ngIf="userForm.controls['password'].errors.required">
+                password is Required
+              </div>
+
+            </div>
+          </div>
+          <div class='col-md-4'>
+            <label>organization name</label><br>
+            <input type="text" formControlName="organization" name="organization" class='form-control' />
+            <div class='error' *ngIf="userForm.controls['organization'].errors">
+              <div class='alert alert-danger' *ngIf="userForm.controls['organization'].errors.required">
+                organization name is required
+              </div>
+
+            </div>
+          </div>
+
+          <div class='col-md-4'>
+            <label>organization url</label><br>
+            <input type="text" formControlName="orgurl" name="orgurl" class='form-control' />
+            <div class='error' *ngIf="userForm.controls['orgurl'].errors">
+              <div class='alert alert-danger' *ngIf="userForm.controls['orgurl'].errors.required">
+                url is Required
+              </div>
+
+            </div>
+          </div>
+          <div class='col-md-4'>
+            <label>Phone no</label><br>
+            <input type="number" formControlName="phone" name="phone" class='form-control' />
+            <div class='error' *ngIf="userForm.controls['phone'].errors">
+              <div class='alert alert-danger' *ngIf="userForm.controls['phone'].errors.required">
+                phone no is Required
+              </div>
+
+            </div>
+          </div>
+
+
+          <input type="submit" name="save" value="Save" class='btn btn-primary' onClick=save() />
+        </form>
+      </div>
+    </div>
+  </div>
+<!--<div *ngIf="user">
+  <fieldset>
+    <legend>Form Data</legend>
+    <div> 
+      <h2>
+        Name: {{user.name}}
+      </h2>
+      </div>
+    <div>
+      <h2>
+        Email: {{user.email}}
+      </h2>
+    </div>
+  </fieldset>
+</div>-->
+
+<!-- <fieldset>
+    <legend>Users</legend>
+    <table>
+      <tr>
+        <th>
+          S.No.
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          Email
+        </th>
+        <th>
+            password
+          </th>
+          <th>
+              Organization name
+            </th>
+            <th>
+                organization url
+              </th>
+              <th>
+                phone no
+                  </th>
+                
+
+      </tr>
+      <tr *ngFor="let u of users">
+        <td>
+         {{u._id}}
+        </td>
+
+        <td>
+          {{u.name}}
+        </td>
+
+        <td>
+          {{u.email}}
+        </td>
+        <td>
+            {{u.password}}
+          </td>
+          <td>
+              {{u.organization}}
+            </td>
+            <td>
+                {{u.organizationurl}}
+              </td>
+              <td>
+                  {{u.phoneno}}
+                </td>
+      </tr>
+    </table>
+  </fieldset>-->

@@ -1,0 +1,9 @@
+input{
+    display:inline-block;
+}
+.error{
+    color: red;
+}
+.div{
+    text-align:center;
+}
